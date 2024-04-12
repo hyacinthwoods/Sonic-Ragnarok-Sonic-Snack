@@ -1,25 +1,24 @@
-const express = requires('express')
-const cors = require('cors')
-const bodyParser = require ('body-parser')
-const router = require('./routes/router')
+const express = require('express');
+//import cors from 'cors';
+//import bodyParser from 'body-parser';
+const router = require('./routes/router');
 
-const app = express()
+const app = express();
 
+//app.use(cors());
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:false}))
-
-const corsOptions ={
+const corsOptions = {
     origin: '*',
     credentials: true,
     optionsSuccessStatus: 200
-}
+};
 
-app.use(cors(corsOptions))
-app.use('/', router)
+app.use(cors(corsOptions));
+app.use('/', router);
 
-
-const port = 8080
-const server = app.listen(port, ()  =>{
-    console.log('please be running ${port}')
-})
+const port = 8080;
+const server = app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
